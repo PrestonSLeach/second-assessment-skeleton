@@ -139,10 +139,12 @@ A user's credentials. These are mostly used for validation and authentication du
 ```
 
 ### Hashtag
-A hashtag associated with tweets that contain its label. The `label` property must be unique, but is case-insensitive.
+A hashtag associated with tweets that contain its label. The `label` property must be unique, but is case-insensitive. The `firstUsed` timestamp should be assigned on creation, and must never be updated. The `lastUsed` timestamp should be updated every time a new tweet is tagged with the hashtag.
 ```javascript
 { // Hashtag
-  label: 'string'
+  label: 'string',
+  firstUsed: 'timestamp',
+  lastUsed: 'timestamp'
 }
 ```
 
