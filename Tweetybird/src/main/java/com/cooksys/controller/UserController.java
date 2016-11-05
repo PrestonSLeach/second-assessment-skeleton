@@ -46,7 +46,7 @@ public class UserController {
 
 	@GetMapping("/@{username}")
 	public Users getUser(@PathVariable String username) {
-		return userRepo.getUsersByUsernameIgnoreCase(username);
+		return userRepo.getUsersByUsernameIgnoreCaseAndActiveTrue(username);
 	}
 
 	@PostMapping
@@ -68,7 +68,7 @@ public class UserController {
 	@DeleteMapping("/@{username}")
 	public void deleteUser(@PathVariable String username, @RequestBody Credentials c, Users u) {
 //		if ((userRepo.getUsersByCredentials(c) != null)) {
-		u = userRepo.getUsersByUsernameIgnoreCase(username);
+		u = userRepo.getUsersByUsernameIgnoreCaseAndActiveTrue(username);
 		u.setActive(false);
 		userService.add(u);
 //		}
