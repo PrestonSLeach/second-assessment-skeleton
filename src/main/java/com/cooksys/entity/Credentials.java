@@ -12,20 +12,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "credentials")
 public class Credentials {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(unique = true, nullable = false)
 	private String username;
-	
+
 	@Column(nullable = false)
 	private String password;
-	
-	@OneToOne(mappedBy= "credentials", cascade= CascadeType.ALL)
+
+	@OneToOne(mappedBy = "credentials", cascade = CascadeType.ALL)
 	private Users user;
-	
 
 	public Long getId() {
 		return id;
@@ -46,7 +45,7 @@ public class Credentials {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -54,6 +53,5 @@ public class Credentials {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }

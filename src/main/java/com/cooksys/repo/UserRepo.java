@@ -12,17 +12,19 @@ public interface UserRepo extends JpaRepository<Users, Long> {
 	List<Users> findByUsernameNotNull(String username);
 
 	Users getUsersByUsernameIgnoreCaseAndActiveTrue(String username);
-	
+
 	Boolean findUsersByUsernameIgnoreCaseAndActiveTrue(String username);
-	
+
+	Users getCredentialsByUsernameIgnoreCase(String username);
+
 	Users getUsersByUsernameIgnoreCase(String username);
-	
+
 	List<Users> getByUsernameNotNull(String userlist);
-	
+
 	List<Users> getUsernameByUsernameNotNull();
 
 	List<Users> findByActiveTrue();
-	
+
 	Users getUsersByCredentials(Credentials credentials);
 
 }
