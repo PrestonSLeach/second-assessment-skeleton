@@ -7,8 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "credentials")
@@ -30,10 +31,10 @@ public class Credentials {
 	public Long getId() {
 		return id;
 	}
-
-//	public Users getUsers() {
-//		return users;
-//	}
+	@JsonIgnore
+	public Users getUsers() {
+		return users;
+	}
 
 	public void setUsers(Users users) {
 		this.users = users;

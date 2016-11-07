@@ -3,18 +3,17 @@ package com.cooksys.service;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.entity.Credentials;
-import com.cooksys.entity.Users;
-import com.cooksys.repo.CredentialRepo;
+import com.cooksys.repo.CredentialsRepo;
 import com.cooksys.repo.UserRepo;
 
 @Service
 public class CredentialService {
 
-	private CredentialRepo cr;
+	private CredentialsRepo cr;
 	private Credentials c;
 	private UserRepo ur;
 
-	public CredentialService(CredentialRepo cr, UserRepo us) {
+	public CredentialService(CredentialsRepo cr, UserRepo us) {
 		this.cr = cr;
 		this.ur = ur;
 	}

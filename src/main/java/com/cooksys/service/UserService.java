@@ -1,6 +1,9 @@
 package com.cooksys.service;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cooksys.entity.Credentials;
 import com.cooksys.entity.Users;
@@ -14,6 +17,7 @@ public class UserService {
 	private UserRepo userRepo;
 	private TweetRepo tweetRepo;
 	private CredentialsRepo cr;
+	private EntityManager em;
 
 	public UserService(UserRepo userRepo, TweetRepo tweetRepo, CredentialsRepo cr) {
 		this.userRepo = userRepo;
@@ -32,6 +36,11 @@ public class UserService {
 	// } else
 	// return "User does not exist.";
 	// }
+	
+//  	@Transactional
+//  	public void update(Users user) {
+//  		em.persist(user);
+//  	}
 
 	public void add(Users user) {
 		userRepo.saveAndFlush(user);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.cooksys.entity.Credentials;
 import com.cooksys.entity.Users;
 
 public interface UserRepo extends JpaRepository<Users, Long> {
@@ -28,4 +29,6 @@ public interface UserRepo extends JpaRepository<Users, Long> {
 
 	Users getFollowersByUsername(String username);
 	
+	//causes unsaved transient instance
+	Users getUsersByCredentials(Credentials credentials);
 }

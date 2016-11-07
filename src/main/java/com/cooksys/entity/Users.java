@@ -1,5 +1,6 @@
 package com.cooksys.entity;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ public class Users {
 	private String username;
 
 	@Column(updatable = false)
-	private Long joined;
+	private Timestamp joined;
 	
 	@Column(nullable = false)
 	private Boolean active;
@@ -48,7 +49,7 @@ public class Users {
 	private Credentials credentials;
 	
 	@OneToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name= "profile_fk", unique = true)
+	@JoinColumn(name= "profile", unique = true)
 	private Profile profile;
 	
 	@ElementCollection()
@@ -86,12 +87,12 @@ public class Users {
 		this.username = username;
 	}
 
-	public Long getJoined() {
+	public Timestamp getJoined() {
 		return joined;
 	}
 
-	public void setJoined(Long joined) {
-		this.joined = joined;
+	public void setJoined(Timestamp currentTimestamp) {
+		this.joined = currentTimestamp;
 	}
 
 	public List<Tweet> getTweets() {
