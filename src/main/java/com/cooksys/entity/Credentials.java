@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -22,16 +23,20 @@ public class Credentials {
 
 	@Column(nullable = false)
 	private String password;
-
+	
 	@OneToOne(mappedBy = "credentials", cascade = CascadeType.ALL)
-	private Users user;
+	private Users users;
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setUser(Users user) {
-		this.user = user;
+//	public Users getUsers() {
+//		return users;
+//	}
+
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 	public void setId(Long id) {

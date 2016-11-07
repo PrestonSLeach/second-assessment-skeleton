@@ -27,7 +27,7 @@ public class Users {
 
 	@Column(updatable = false)
 	private Long joined;
-
+	
 	@Column(nullable = false)
 	private Boolean active;
 
@@ -42,18 +42,18 @@ public class Users {
 	@OneToMany(mappedBy = "user")
 	@JsonIgnore
 	private List<Tweet> tweets;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "credentials_fk", unique = true)
+	
+	@OneToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name = "credentials")
 	private Credentials credentials;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "profile_fk", unique = true)
+	
+	@OneToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name= "profile_fk", unique = true)
 	private Profile profile;
-
+	
 	@ElementCollection()
 	private List<String> followers;
-
+	
 	public Profile getProfile() {
 		return profile;
 	}
@@ -61,7 +61,7 @@ public class Users {
 	public void setProfile(Profile profile) {
 		this.profile = profile;
 	}
-
+	
 	public Credentials getCredentials() {
 		return credentials;
 	}
@@ -109,11 +109,10 @@ public class Users {
 	public void setFollowers(List<String> follows) {
 		this.followers = follows;
 	}
-
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", username=" + username + ", joined=" + joined + ", active=" + active
-				+ ", credenitals=" + credentials + ", profile=" + profile + "]";
+		return "Users [id=" + id + ", username=" + username + ", joined=" + joined + ", active=" + active + ", credenitals=" + credentials
+				+ ", profile=" + profile + "]";
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.cooksys.controller;
 
-import java.net.URI;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -58,10 +57,8 @@ public class UserController {
 	public Users createUser(@RequestBody Users user) {
 		user.setActive(true);
 		user.setUsername(user.getCredentials().getUsername());
-
 		try {
 			userService.add(user);
-			System.out.println("createUser");
 			return user;
 		} catch (DataIntegrityViolationException e) {
 			System.out.println("Wrong information.");
@@ -69,31 +66,31 @@ public class UserController {
 		}
 
 	}
-
+	
+	@Transactional
 	@PatchMapping("/@{username}")
 	public Users updateProfile(@PathVariable String username, @RequestBody Users user) {
+		user = userRepo.getUsersByUsernameIgnoreCaseAndActiveTrue(username);
+		user.setProfile(user.getProfile());
 		userService.add(user);
 		return user;
 	}
 
 	@Transactional
 	@DeleteMapping("/@{username}")
-	public void deleteUser(@PathVariable String username, @RequestBody Credentials c, Users u) {
-		// if ((userRepo.getUsersByCredentials(c) != null)) {
+	public void deleteUser(@PathVariable String username, @RequestBody Users u) {
 		u = userRepo.getUsersByUsernameIgnoreCaseAndActiveTrue(username);
 		u.setActive(false);
 		userService.add(u);
-		// }
 	}
-
+	
+	@Transactional
 	@PostMapping("/@{username}/follow")
-	public void followUser(@PathVariable String username, @RequestBody Credentials c, Users u) {
-		em.merge(u);
-		em.merge(c);
-		u = userRepo.getUsersByCredentials(c);
+	public Users followUser(@PathVariable String username, @RequestBody Users u) {
 		u.getFollowers().add(username);
 		userService.add(u);
 		System.out.println("fuck yea");
+		return u;
 
 	}
 

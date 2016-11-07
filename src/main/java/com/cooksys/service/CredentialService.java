@@ -29,10 +29,10 @@ public class CredentialService {
 		System.out.println("Credential password added");
 	}
 
-	public Users getUser(Credentials c) {
-		cr.saveAndFlush(c);
-		return ur.getUsersByCredentials(c);
-	}
+//	public Users getUser(Credentials c) {
+//		cr.saveAndFlush(c);
+//		return ur.getUsersByCredentials(c);
+//	}
 
 	public void createCredentials(String username, String password) {
 		try {
